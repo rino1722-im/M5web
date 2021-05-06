@@ -1,4 +1,4 @@
-et device = null;
+let device = null;
 let chracteristics = null;
 let isConnetted = false;
 
