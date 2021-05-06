@@ -15,7 +15,7 @@ async function onButtonClick()
         { name: ["m5stack-bbled"] },
       ],
     });
-
+  
     console.log('Connecting to GATT Server...');
     const server = await device.gatt.connect();
 
@@ -41,20 +41,19 @@ async function onButtonClick()
       await myCharacteristic.writeValue(encoder.encode(text));
       await myCharacteristic.startNotifications();
 
-//データの受け取り     
       myCharacteristic.addEventListener('characteristicvaluechanged', (event) => {
         const value = event.target.value;
         const decoder = new TextDecoder('utf-8');
-        console.log(decoder.decode(value));//コンソールログに表示
+        console.log(decoder.decode(value));
       });
 
       console.log('Waiting 60 seconds to receive data from the device...')
-      await sleep(100 * 1000);//oo秒間接続
+      await sleep(60 * 1000);
     }
   } catch(error) {
     console.log('Argh! ' + error);
   }
-
+  
   if (device) {
     if (device.gatt.connected) {
       device.gatt.disconnect();
@@ -64,7 +63,7 @@ async function onButtonClick()
   }
 }
 
-function sendData(e)//データ送信の設定
+function sendData(e)
 {
   if ( isConnected && characteristics != null ){
     if ( characteristics[0] != null ){
@@ -88,4 +87,5 @@ async function sleep(ms) {
       resolve();
     }, ms);
   });
-} 
+}
+
