@@ -80,7 +80,6 @@ function sendData(e)
 let btn = document.getElementById('send_button');
 btn.addEventListener('click',sendData );
 
-
 async function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(() => {
