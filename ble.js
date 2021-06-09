@@ -70,7 +70,7 @@ function sendData(e)
 
       const encoder = new TextEncoder('utf-8');
       let ch = characteristics[0];
-      ch.writeValue(encoder.encode("SendPC")).then(
+      ch.writeValue(encoder.encode("Send")).then(
         char => {ch.startNotifications();}
       );
     }
